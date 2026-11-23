@@ -1,0 +1,9 @@
+---
+layout: null
+---
+{% assign pdfs = site.static_files | where_exp: "file", "file.extname == '.pdf' or file.extname == '.PDF'" %}
+[
+{% for file in pdfs %}
+  {{ file.path | jsonify }}{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]
